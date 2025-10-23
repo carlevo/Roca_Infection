@@ -1,4 +1,6 @@
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
@@ -11,6 +13,20 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+    public void StartScene()
+    {
+        SceneManager.LoadScene("LoreScene");
+    }
+
+    public void HallwayScene()
+    {
+        SceneManager.LoadScene("HallwayScene");
+    }
+    public void classScene()
+    {
+        SceneManager.LoadScene("classScene");
+    }
+
 }
