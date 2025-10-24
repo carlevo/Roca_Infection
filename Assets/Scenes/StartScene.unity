@@ -801,7 +801,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1105813304}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1913763878}
+        m_TargetAssemblyTypeName: NewMonoBehaviourScript, Assembly-CSharp
+        m_MethodName: InstructionsScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1105813304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,7 +1072,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1404541643}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1913763878}
+        m_TargetAssemblyTypeName: NewMonoBehaviourScript, Assembly-CSharp
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1404541643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,7 +1134,7 @@ GameObject:
   - component: {fileID: 1680656923}
   - component: {fileID: 1680656924}
   m_Layer: 0
-  m_Name: RocaInfection
+  m_Name: ImageBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1431,7 +1455,7 @@ GameObject:
   - component: {fileID: 1913763874}
   - component: {fileID: 1913763878}
   m_Layer: 5
-  m_Name: StartMenu
+  m_Name: StartMenu(canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

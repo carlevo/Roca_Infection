@@ -29,4 +29,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
         SceneManager.LoadScene("classScene");
     }
 
+    public void InstructionsScene()
+    {
+        SceneManager.LoadScene("InstructionsScene");
+    }
+
 }
