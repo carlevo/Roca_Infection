@@ -4,25 +4,6 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-<<<<<<< Updated upstream
-    path: Assets/Scenes/StartScene.unity
-    guid: dd0070266e8318040b2af23f35d2ef71
-  - enabled: 1
-=======
->>>>>>> Stashed changes
-    path: Assets/Scenes/LoreScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/ClassScene.unity
-    guid: 3478744b8b3c08b47876f33363f39efb
-  - enabled: 1
-    path: Assets/Scenes/HallWayScene.unity
-    guid: aed26cf16aaec8c42a923f952d7a2ef0
-  - enabled: 1
-    path: Assets/Scenes/InstructionsScene.unity
-    guid: 8597aa643fb727245803928904a3edca
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_Scenes: []
+  m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
