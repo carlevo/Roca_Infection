@@ -15,7 +15,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
 
     }
-    public void StartScene()
+    //Utilizaremos loadscene para cambiar de escena cuando se llame a la funcion en los botones con el canvas
+    public void StartScene() 
     {
         SceneManager.LoadScene("LoreScene");
     }
@@ -34,4 +35,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
         SceneManager.LoadScene("InstructionsScene");
     }
 
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }
