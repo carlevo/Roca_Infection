@@ -318,9 +318,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
       m_SelectedIDs: eef5ffff
       m_LastClickedID: -2578
       m_ExpandedIDs: 08fbffff9cab0000aaab0000
+=======
+      m_SelectedIDs: f4e60000
+      m_LastClickedID: 0
+      m_ExpandedIDs: f853ffff105affff
+>>>>>>> Stashed changes
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -441,7 +447,11 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< Updated upstream
     - Assets/Images
+=======
+    - Assets/Scenes
+>>>>>>> Stashed changes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -452,14 +462,22 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\c.creus\Documents\UnityProject\Roca_Infection
+  m_LastProjectPath: C:\Users\s.lopez\Documents\Unity Projects (No Borrar porfa plis)\Roca_Infection
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b0230000
     m_LastClickedID: 9136
+<<<<<<< Updated upstream
     m_ExpandedIDs: 00000000fcab0000feab000000ac000002ac000004ac000006ac000008ac00000aac00000cac0000
+=======
+<<<<<<< Updated upstream
+    m_ExpandedIDs: 00000000a0ad0000a2ad0000a4ad0000a6ad0000a8ad0000aaad0000acad0000aead0000b0ad0000
+=======
+    m_ExpandedIDs: 
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -488,7 +506,15 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< Updated upstream
     m_ExpandedIDs: ffffffff00000000fcab0000feab000000ac000002ac000004ac000006ac000008ac00000aac00000cac0000
+=======
+<<<<<<< Updated upstream
+    m_ExpandedIDs: 00000000a0ad0000a2ad0000a4ad0000a6ad0000a8ad0000aaad0000acad0000aead0000b0ad0000
+=======
+    m_ExpandedIDs: ffffffff9ae60000cce60000
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
