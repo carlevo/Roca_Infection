@@ -1,42 +1,36 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+[RequireComponent(typeof(CharacterController))]
+public class SimplePlayerMovement : MonoBehaviour
 {
-    public float speed = 5f; //Velocidad de movimiento del jugador
+    public float speed = 5f;
+    public float gravity = -9.81f;
 
     CharacterController controller;
-    Camera mainCam;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    Vector3 velocity;
+
     void Start()
     {
-        controller = GetComponent<CharacterController>(); //Coger el componente CharacterController del objeto al que se asigna este script
-        mainCam = Camera.main; //Pillar la camara principal
-        
+        controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxis("Horizontal"); //Eje horizontal (A,D o flechas)
-        float v = Input.GetAxis("Vertical"); //Eje vertical (W,S o flechas)
+        float h = Input.GetAxisRaw("Horizontal");  // A / D
+        float v = -Input.GetAxisRaw("Vertical");   // W / S
 
-        Vector3 input = new Vector3(h, 0f, v);
-        if (input.magnitude > 0.01f)
+        Vector3 move = new Vector3(h, 0f, v);
+
+        if (move.sqrMagnitude > 0.01f)
         {
-            // Dirección según la cámara
-            Vector3 camForward = mainCam.transform.forward;
-            Vector3 camRight   = mainCam.transform.right;
-            camForward.y = 0;
-            camRight.y   = 0;
-            camForward.Normalize();
-            camRight.Normalize();
-
-            Vector3 move = camForward * v + camRight * h;
-            controller.SimpleMove(move.normalized * speed);
-
-            // Opcional: hacer que el player mire hacia donde se mueve
+            controller.Move(move.normalized * speed * Time.deltaTime);
             transform.rotation = Quaternion.LookRotation(move);
         }
-        
+
+        if (controller.isGrounded && velocity.y < 0)
+            velocity.y = -1f;
+
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
 }
