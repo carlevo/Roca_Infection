@@ -1211,7 +1211,7 @@ PrefabInstance:
     - target: {fileID: 5463067637824733412, guid: 6ba2d88c962f16b4f9d956d70e158d32, type: 3}
       propertyPath: zombiePrefab
       value: 
-      objectReference: {fileID: 919132149155446097, guid: 74529c5f9e7bef448bd5222ef0f49f8b, type: 3}
+      objectReference: {fileID: 1649831208145866335, guid: adfb532dde6ff13479d8ead9f6f484ac, type: 3}
     - target: {fileID: 5542399235748137252, guid: 6ba2d88c962f16b4f9d956d70e158d32, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.447
