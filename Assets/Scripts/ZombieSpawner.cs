@@ -1,106 +1,81 @@
 using UnityEngine;
+using UnityEngine.UI; // Necesario para el Texto de la UI
 using System.Collections;
 
 public class ZombieSpawner : MonoBehaviour
 {
-    public GameObject zombiePrefab; //Declaramos el prefab del zombie
-    
-   
-    public float tiempoEntreSpawns = 10f; //Tiempo entre cada spawneo (momentaneamente)
-    
-    
-    public Transform[] puntosDeSpawn;
-    
-   
-    public int maxZombies = 0; //Maximo de zombies en la escena
-    
-    private int zombiesActuales = 0; //Zombies actuales en la escena
-    
+    [Header("Configuración Principal")]
+    public GameObject zombiePrefab;      // Tu prefab del zombie
+    public Transform[] puntosDeSpawn;    // Tus puntos vacíos (SpawnPoints)
+
+    [Header("Configuración de Oleadas")]
+    public Text textoOleada;             // Asigna aquí el objeto Text del Canvas
+    public int oleadaActual = 1;         // Empieza en la 1
+    public int zombiesPorOleada = 5;     // Cantidad inicial
+    public float tiempoEntreZombies = 1f; // Velocidad a la que salen dentro de la oleada
+    public float tiempoEntreOleadas = 4f; // Tiempo de descanso al terminar una oleada
+
     private void Start()
     {
-        // Verificar que tenemos el prefab y los puntos de spawn
+        // Verificaciones de seguridad
         if (zombiePrefab == null)
         {
-            Debug.LogError("¡No se ha asignado el prefab del zombie!");
+            Debug.LogError("¡Falta el Prefab del Zombie!");
             return;
         }
-        
         if (puntosDeSpawn == null || puntosDeSpawn.Length == 0)
         {
-            Debug.LogError("¡No se han asignado puntos de spawn!");
+            Debug.LogError("¡No has puesto los Puntos de Spawn!");
             return;
         }
-        
-        // Iniciar la corrutina de spawn
-        StartCoroutine(SpawnZombiesCoroutine());
+
+        // Arrancamos el bucle infinito de oleadas
+        StartCoroutine(RutinaOleadas());
     }
-    
-    private IEnumerator SpawnZombiesCoroutine()
+
+    private IEnumerator RutinaOleadas()
     {
+        // Bucle infinito: Mantiene el juego corriendo oleada tras oleada
         while (true)
         {
-            // Esperar el tiempo definido
-            yield return new WaitForSeconds(tiempoEntreSpawns);
+            // --- FASE 1: INICIO DE OLEADA ---
+            if (textoOleada != null) 
+                textoOleada.text = "Wave " + oleadaActual;
             
-            // Verificar si hay límite de zombies
-            if (maxZombies > 0 && zombiesActuales >= maxZombies)
+            Debug.Log("Iniciando Oleada " + oleadaActual + " con " + zombiesPorOleada + " zombies.");
+
+            // --- FASE 2: SPAWN DE ENEMIGOS ---
+            for (int i = 0; i < zombiesPorOleada; i++)
             {
-                Debug.Log("Límite de zombies alcanzado");
-                continue;
+                SpawnZombie();
+                // Esperamos un poco entre cada zombie para que no salgan todos pegados
+                yield return new WaitForSeconds(tiempoEntreZombies);
             }
+
+            // --- FASE 3: ESPERAR A QUE EL JUGADOR LIMPIE LA SALA ---
+            // Esta línea espera hasta que el número de objetos con tag "Zombie" sea 0
+            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Zombie").Length == 0);
+
+            // --- FASE 4: PREPARAR SIGUIENTE NIVEL ---
+            if (textoOleada != null) 
+                textoOleada.text = "¡Oleada " + oleadaActual + " Completada!";
+
+            Debug.Log("Oleada terminada. Descansando...");
             
-            // Generar el zombie
-            SpawnZombie();
+            yield return new WaitForSeconds(tiempoEntreOleadas);
+
+            // Aumentamos dificultad
+            oleadaActual++;           // Siguiente nivel
+            zombiesPorOleada += 5;    // 5 zombies más que antes
         }
     }
-    
+
     private void SpawnZombie()
     {
-        // Seleccionar un punto de spawn aleatorio
+        // Lógica original para elegir posición aleatoria
         int indiceAleatorio = Random.Range(0, puntosDeSpawn.Length);
         Transform puntoSeleccionado = puntosDeSpawn[indiceAleatorio];
-        
-        // Instanciar el zombie en la posición y rotación del punto seleccionado
-        GameObject nuevoZombie = Instantiate(
-            zombiePrefab, 
-            puntoSeleccionado.position, 
-            puntoSeleccionado.rotation
-        );
-        
-        zombiesActuales++;
-        
-        // Opcional: Agregar componente para rastrear cuando el zombie es destruido
-        ZombieCounter counter = nuevoZombie.AddComponent<ZombieCounter>();
-        counter.spawner = this;
-        
-        Debug.Log($"Zombie generado en el punto {indiceAleatorio + 1}. Total: {zombiesActuales}");
-    }
-    
-    // Llamar esto cuando un zombie sea destruido
-    public void ZombieDestruido()
-    {
-        zombiesActuales--;
-        if (zombiesActuales < 0) zombiesActuales = 0;
-    }
-    
-    // Método opcional para generar un zombie manualmente (útil para testing)
-    [ContextMenu("Generar Zombie Ahora")]
-    public void GenerarZombieManual()
-    {
-        SpawnZombie();
-    }
-}
 
-// Clase auxiliar para rastrear zombies
-public class ZombieCounter : MonoBehaviour
-{
-    public ZombieSpawner spawner;
-    
-    private void OnDestroy()
-    {
-        if (spawner != null)
-        {
-            spawner.ZombieDestruido();
-        }
+        Instantiate(zombiePrefab, puntoSeleccionado.position, puntoSeleccionado.rotation);
     }
 }
