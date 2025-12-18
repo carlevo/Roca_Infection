@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Necesario para cambiar escenas
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class PlayerHealth : MonoBehaviour
     [Header("Daño por Proximidad")]
     public float damageRange = 3f;
     public float damagePerSecond = 20f;
+    
+    [Header("Configuración de Game Over")]
+    public string gameOverScene = "GameOver"; // Nombre de la escena de Game Over
+    public float delayBeforeSceneChange = 0.5f; // Tiempo antes de cambiar escena
+    
+    private bool isDead = false;
     
     private void Start()
     {
@@ -36,8 +43,11 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Vida restaurada");
         }
         
-        // Verificar zombies cercanos
-        CheckZombieProximity();
+        // Solo verificar zombies si no está muerto
+        if (!isDead)
+        {
+            CheckZombieProximity();
+        }
     }
     
     void CheckZombieProximity()
@@ -68,7 +78,7 @@ public class PlayerHealth : MonoBehaviour
         
         UpdateHealthBar();
         
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
             Die();
         }
@@ -92,7 +102,62 @@ public class PlayerHealth : MonoBehaviour
     
     private void Die()
     {
+        isDead = true;
         Debug.Log("¡Jugador derrotado!");
-        Time.timeScale = 0f;
+        
+        // Desactivar controles del jugador (si los tiene)
+        DisablePlayerControls();
+        
+        // Llamar a la función de cambio de escena con delay
+        Invoke("LoadGameOverScene", delayBeforeSceneChange);
+    }
+    
+   void DisablePlayerControls()
+{
+    // Desactivar scripts de movimiento
+    MonoBehaviour[] components = GetComponents<MonoBehaviour>();
+    foreach (MonoBehaviour component in components)
+    {
+        if (component != this)
+        {
+            component.enabled = false;
+        }
+    }
+    
+    // Si el jugador tiene Rigidbody, hacerlo cinemático
+    Rigidbody rb = GetComponent<Rigidbody>();
+    if (rb != null)
+    {
+        // Esta es la manera CORRECTA:
+        rb.isKinematic = true;
+        // Esto detendrá completamente el movimiento físico
+    }
+    
+    // Opcional: Si tu jugador tiene un CharacterController
+    CharacterController controller = GetComponent<CharacterController>();
+    if (controller != null)
+    {
+        controller.enabled = false; // Este SÍ tiene .enabled
+    }
+}
+    
+    void LoadGameOverScene()
+    {
+        // Cambiar a la escena de Game Over
+        SceneManager.LoadScene(gameOverScene);
+    }
+    
+    // Opcional: Método para recargar la escena actual
+    public void RestartGame()
+    {
+        Time.timeScale = 1f; // Asegurar que el tiempo esté normal
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
+    // Opcional: Método para volver al menú principal
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu"); // Asegúrate de tener esta escena
     }
 }
