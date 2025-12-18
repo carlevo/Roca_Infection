@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6235858922512851917}
   - component: {fileID: 8401719860052533549}
   - component: {fileID: -3817393905884059082}
+  - component: {fileID: 2499548901817727121}
   m_Layer: 0
   m_Name: bala
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2407441492875902058}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 2.5644, y: 0.0304, z: 1.90777}
+  m_LocalPosition: {x: 345.76178, y: 258.09387, z: -3.87961}
   m_LocalScale: {x: -0.09485237, y: 0.1275683, z: 0.059771974}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -132,3 +133,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Balas
   vel: 50
   tiempoVida: 3
+  scoreText: {fileID: 0}
+  scoreActual: 0
+--- !u!135 &2499548901817727121
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2407441492875902058}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 6.0525928
+  m_Center: {x: 0, y: 0, z: 6.0525928}

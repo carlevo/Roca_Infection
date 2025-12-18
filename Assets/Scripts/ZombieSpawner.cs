@@ -40,7 +40,7 @@ public class ZombieSpawner : MonoBehaviour
         {
             // --- FASE 1: INICIO DE OLEADA ---
             if (textoOleada != null) 
-                textoOleada.text = "Wave " + oleadaActual;
+                textoOleada.text = "Oleada " + oleadaActual;
             
             Debug.Log("Iniciando Oleada " + oleadaActual + " con " + zombiesPorOleada + " zombies.");
 

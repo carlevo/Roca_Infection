@@ -431,6 +431,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7880177605317574253}
   - component: {fileID: 1688359567503810081}
+  - component: {fileID: 5620784345287004778}
+  - component: {fileID: 8238908934132409855}
   m_Layer: 0
   m_Name: modelo_zombie_test
   m_TagString: Zombie
@@ -447,7 +449,7 @@ Transform:
   m_GameObject: {fileID: 1649831208145866335}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 61.411484, y: 0.030399323, z: -8.1857815}
+  m_LocalPosition: {x: 61.411484, y: -0.28, z: -8.1857815}
   m_LocalScale: {x: 3.152768, y: 2.82749, z: 3.1706}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -484,6 +486,56 @@ MonoBehaviour:
   velocidad: 3
   distanciaMinima: 2
   suavizadoRotacion: 5
+--- !u!54 &5620784345287004778
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649831208145866335}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &8238908934132409855
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649831208145866335}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.67374426
+  m_Height: 2.8782685
+  m_Direction: 1
+  m_Center: {x: 0.15834889, y: 1.0474123, z: 0.016286021}
 --- !u!1 &1668295708537103687
 GameObject:
   m_ObjectHideFlags: 0
