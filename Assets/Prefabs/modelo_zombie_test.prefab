@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902d478fc76bc05478c5ea1387e54d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieFollowPlayer
-  velocidad: 3
+  velocidad: 7
   distanciaMinima: 2
   suavizadoRotacion: 5
 --- !u!54 &5620784345287004778
